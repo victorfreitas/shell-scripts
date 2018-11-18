@@ -9,7 +9,7 @@ COLOR_DEFAULT="\e[39m"
 function usage() {
   echo -e "\n${BLUE}Usage: script.sh [options]\n"
   echo "Options:"
-  echo "  -d  String: absolute path to find images"
+  echo "  -d  String: pathname to find images"
   echo "  -s  String: Search image name"
   echo "  -r  String: Replace search image name"
   echo "  -h  Empty value for show help"
@@ -26,7 +26,7 @@ do
   case "${option}" in
     s) search=${OPTARG};;
     r) replace=${OPTARG};;
-    d) dir=${OPTARG};;
+    d) dir=$(readlink -m ${OPTARG});;
     h) usage;;
   esac
 done
@@ -49,3 +49,4 @@ while read file; do
   mv "${file}" "${fileDir}/${newFilename}"
   echo -e "${GREEN}$(without_dir ${file}) ${YELLOW}moved to${GREEN} $(without_dir ${fileDir})/${newFilename}"
 done
+
