@@ -2,5 +2,5 @@
 
 ```
 $ chmod +x replace-images-name.sh
-$ ./script.sh -s git -r github -d /dir/name
+$ ./replace-images-name.sh -s git -r github -d /dir/name
 ```
